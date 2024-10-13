@@ -1,12 +1,6 @@
-# ScopeVerifController
-This folder contains the source code for the Controller component of the ScopeVerif project, a tool designed to run on a PC and send commands to Android devices to conduct experiments, collect results, and analyze them.
-
-- `libs`: This folder contains various utility modules that facilitate device interaction, UI control, and root access handling. It includes classes like `DeviceController`, `UIController`, and `RootHandler` to manage device operations and interactions programmatically.
-- `verification`: This folder is responsible for the core verification logic of the application. It includes modules for generating inputs, scoring, and verifying storage rules, ensuring that the experiments adhere to the defined security and storage policies.
-- `enums`: This folder defines various enumerations used throughout the application to categorize attributes, operation types, rule types, and storage APIs. These enums will be used for test case generation.
-
-# ScopeVerifWorker
-This folder contains worker apps that run on Android devices to perform the actual tasks. Three workers contain identical code, except for their package name. You should not need to modify anything in this folder unless you want to test new storage-related APIs that the current workers do not support.
+# ScopeVerif
+This repository contains the source code for the paper "*ScopeVerif: Analyzing the Security of Android’s
+Scoped Storage via Differential Analysis*", which is used to verify the security properties of Android's storage.
 
 # Quick Start
 1. Ensure adb is in the PATH.
@@ -32,3 +26,16 @@ This folder contains worker apps that run on Android devices to perform the actu
    ```
 8. Run `python run_experiment.py` to start the experiment and collect results.
 9. Run `python analyze_results.py` to analyze the results, cluster violations, and generate reports.
+
+# Contents
+This project contains the controller app in `ScopeVerifController` and the worker apps in `ScopeVerifWorker`.
+
+## ScopeVerifController
+This folder contains the source code for the Controller component of the ScopeVerif project, a tool designed to run on a PC and send commands to Android devices to conduct experiments, collect results, and analyze them.
+
+- `libs`: This folder contains various utility modules that facilitate device interaction, UI control, and root access handling. It includes classes like `DeviceController`, `UIController`, and `RootHandler` to manage device operations and interactions programmatically.
+- `verification`: This folder is responsible for the core verification logic of the application. It includes modules for generating inputs, scoring, and verifying storage rules, ensuring that the experiments adhere to the defined security and storage policies.
+- `enums`: This folder defines various enumerations used throughout the application to categorize attributes, operation types, rule types, and storage APIs. These enums will be used for test case generation.
+
+## ScopeVerifWorker
+This folder contains worker apps that run on Android devices to perform the actual tasks. Three workers contain identical code, except for their package names. Based on different package names, these workers will be assigned different roles in the experiment. The controller app will generate test cases and send commands to these workers. These workers will perform the file-related operations and return results to the controller. You should not need to modify anything in this folder unless you want to test new storage-related APIs that the current workers do not support.
