@@ -1,6 +1,7 @@
 # ScopeVerif
 This repository contains the source code for the paper "*ScopeVerif: Analyzing the Security of Android’s
 Scoped Storage via Differential Analysis*", which is used to verify the security properties of Android's storage.
+This work has uncovered nine previously unknown issues, including a high-severity vulnerability now tracked as ``CVE-2025-22439``.
 
 # Quick Start
 1. Ensure adb is in the PATH.
